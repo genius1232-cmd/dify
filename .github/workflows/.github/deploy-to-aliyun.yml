@@ -21,5 +21,5 @@ jobs:
       - name: Build and Push Image
         run: |
           docker build -t dify-app .
-          docker tag dify-app crpi-83wrl3twtce8k8cc.cn-hangzhou.personal.cr.aliyuncs.com/您的命名空间/dify-app:latest
-          docker push crpi-83wrl3twtce8k8cc.cn-hangzhou.personal.cr.aliyuncs.com/您的命名空间/dify-app:latest
+          docker tag dify-app crpi-83wrl3twtce8k8cc.cn-hangzhou.personal.cr.aliyuncs.com/ACR_NAMESPACE/dify-app:latest
+          docker push crpi-83wrl3twtce8k8cc.cn-hangzhou.personal.cr.aliyuncs.com/ACR_NAMESPACE/dify-app:latest
