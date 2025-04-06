@@ -1,0 +1,25 @@
+name: Deploy Dify to Aliyun Registry
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Aliyun ACR
+        uses: docker/login-action@v3
+        with:
+          registry: crpi-83wrl3twtce8k8cc.cn-hangzhou.personal.cr.aliyuncs.com
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Build and Push Image
+        run: |
+          docker build -t dify-app .
+          docker tag dify-app crpi-83wrl3twtce8k8cc.cn-hangzhou.personal.cr.aliyuncs.com/您的命名空间/dify-app:latest
+          docker push crpi-83wrl3twtce8k8cc.cn-hangzhou.personal.cr.aliyuncs.com/您的命名空间/dify-app:latest
